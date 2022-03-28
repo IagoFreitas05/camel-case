@@ -1,16 +1,24 @@
+import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class CamelCaseTest {
-    /* cenários de teste
-    * 1 - O usuário insira uma String Vazia
-    * 2 - O usuário não insira uma String ( um número ou algo do genero)
-    * 3 - Converter o camelCase Recebido  em palavras separadas
-    * */
+    private CamelCase camelCase;
 
+    @Before
+    public void startCamelCase(){
+        this.camelCase = new CamelCase();
+    }
 
     @Test
     public void CamelCaseCallEmpty(){
-
+        assertNull(this.camelCase.receivedText);
     }
 
+    @Test
+    public void CamelCaseComvert(){
+        this.camelCase.receivedText = "ConvertThisStrings";
+        this.camelCase.convert();
+        assertEquals("convert this strings", this.camelCase.convertedText);
+    }
 }
